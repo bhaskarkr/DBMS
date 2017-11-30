@@ -1,0 +1,43 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+
+{% block body %}
+    <title>{{ direct.name }}</title>
+    <style type="text/css">
+        body {
+            background-image: url("{{ direct.pic }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            color:white;
+            height: 100%;
+        }
+        a:link{text-decoration: none;}
+    </style>
+    <div align="center">
+<img src="{{ direct.pic }}" class="img-circle img-thumbnail" style="width:300px;height:300px;" align="left" >
+        <h1>{{ direct.name }}</h1>
+<h2>Gender - {{ direct.gender }}</h2>
+<h3>Date of Birth - {{ direct.dob }}</h3>
+    <br/><br/><br/><br/>
+     <h3 >ABOUT</h3>
+    <br/><p style="text-indent: 200px;margin-left: 100px;margin-right: 100px;font-style: italic; ">{{ direct.description }}</p>
+    </div>
+    <h2>Directed Movies :</h2>
+     <div class="container-fluid" style="color:white">
+            <div class="row">
+                {% for mov in movie %}
+                <div align="center" class="col-sm-4 col-lg-4">
+                    <figure>
+                            <a href="/{{ mov.id }}/detail/">
+                                <img src="{{ mov.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                            <a href="/{{ mov.id }}/detail/" ><h3>{{ mov.title }}</h3></a>
+                            <div align="center" style="color: #FDB230;"><p><strong>&#x2605; IMDB RATING &#x2605;  {{ mov.imdb }}/10.0</strong></p></div>
+                   </figure>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+{% endblock %}

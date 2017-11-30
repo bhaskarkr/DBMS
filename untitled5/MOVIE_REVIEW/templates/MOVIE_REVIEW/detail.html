@@ -1,0 +1,72 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+
+{% block body %}
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+    <style type="text/css">
+
+        body {
+            background-image: url("{{ movie.pic }}");
+            background-size: cover;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            color:white;
+            background-attachment: fixed;
+
+            }
+
+    </style>
+<strong align="center">
+    <a href="{{ movie.trailer }}"><img align="left"  src='{{ movie.pic }}' class="img-circle img-thumbnail" style="width:500px;height:500px; " ></a>
+    <div style="color: #FDB230;"><strong><p>&#x2605; IMDB RATING &#x2605;</p></strong>
+    <strong>{{ movie.imdb }}</strong><span class="grey">/</span><span class="grey" >10.0</span></div><br/>
+    <div style="color: #FDB230;"><strong><p>&#x2605; USERS RATING &#x2605;</p></strong>
+    <strong>{{ average }}</strong><span class="grey">/</span><span class="grey" >10.0</span>&emsp;(users : {{ length }})</div>
+
+    <!-- <iframe align="right" width="320" height="240" src={{ movie.trailer }} frameborder="5" allowfullscreen></iframe>-->
+<h1 align="center">{{ movie.title }}</h1>
+<h3 align="center">{{ movie.year }}</h3>
+<h3 align="center">DIRECTOR - <a href="/{{ director.id }}/directo" style="color: white">{{ director.name }}</a></h3>
+<h3 align="center">ACTORS :</h3>
+{% for act in actor %}
+    <h3 align="center"><a href="/{{ act.actor_id }}/acto">{{ act.actor }}</a></h3>
+{% endfor %}
+ <br/><br/><br/><br/>
+     <h3 align="center" >ABOUT</h3>
+    <br/><p style="text-indent: 200px;margin-left: 100px;margin-right: 100px;font-style: italic; ">{{ movie.description }}</p>
+</div>
+<br/>
+<div align="center" style="color: black;">
+    <div align="center" class="panel panel-danger" style="width: 50%;align-content: center">
+ <div class="panel-heading">Add Comment : (Points range 0 to 10)</div><br/>
+<form align="center" class="form-group horizontal" method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</div>
+
+<!--<div align="center" style="color:black;">
+<div align="center" class="panel panel-danger" style="width: 50%;align-content: center">
+ <div class="panel-heading">Add Comment:</div><br/>
+<form class="form-horizontal" method="post" action=""">{% csrf_token %}
+    <div class="form-group row"> <label>EMAIL:</label><input type="text" name="email" value=""></div>
+    <div class="form-group row"><input type="hidden" name="mov_id" value="{{ movie.id }}"></div>
+    <div class="form-group row"  ><label >RATING:</label><input type="text" name="email" value=""></div>
+    <div class="form-group row"><label >COMMENT:</label><br/>
+    <textarea class="form" rows="3" cols="80" style="color:black;border-color:crimson;border-width:3px; width:70%;box-sizing:border-box ;" id="comment" ></textarea></div>
+ <button type="submit" class="btn btn-default">Submit</button>
+</form>
+    <br/>
+</div>
+</div>
+-->
+{% for com in coment %}
+    <div class="panel panel-group"  style="color: black;height: 50%;width: 70%">
+    <div class="panel panel-primary"  align="left">
+        <div class="panel panel-heading">Email:{{ com.email }}&emsp;&emsp;{{ com.created }}<div class="text" align="right">RATING:{{ com.points }}</div></div>
+    </div>
+        <div class="panel-heading" align="left">  {{ com.comment }}s</div>
+    </div>
+{% endfor %}
+{% endblock %}

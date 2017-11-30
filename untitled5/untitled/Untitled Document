@@ -1,0 +1,6 @@
+[client]
+database = movd
+user = root
+password = B7675745
+default-character-set = utf8
+

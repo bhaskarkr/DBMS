@@ -1,0 +1,28 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+
+<div class="container-fluid" style="color:white;">
+    <div class="row">
+        {% for act in males %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ act.id }}/acto/"><img src="{{ act.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ act.id }}/acto/" ><h2>{{ act.name }}</h2></a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    <!--<div align="right" class="container-fluid" style="color:white;width: 50%">
+    <div class="row">
+        {% for act in females %}
+        <div align="center" class="col-sm-1 col-lg-1">
+            <figure>
+                <a href="/{{ act.id }}/acto/"><img src="{{ act.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ act.id }}/acto/" ><h2>{{ act.name }}</h2></a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>-->
+{% endblock %}

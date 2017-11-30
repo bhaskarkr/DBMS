@@ -1,0 +1,41 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+<div align="center">
+<h1 style="color:greenyellow; list-style-type: none">UPCOMING MOVIES</h1>
+   <div style="display:inline-flex;"> {% for movie in upcoming %}
+        <figure><a href="/{{ movie.id }}/detail/">
+            <img src="{{ movie.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+            <figcaption><strong><a href="/{{ movie.id }}/detail" >{{ movie.title }}<br/>{{ movie.year }}</a></strong></figcaption>
+        </figure>&emsp;&emsp;&emsp;
+    {% endfor %}
+   </div>
+</div>
+    <br/>
+<div align="center">
+<h1 style="color:brown;">
+    NOW SHOWING
+</h1>
+
+{% for show in showing %}
+    <iframe width="420" height="315"  class="img-thumbnail" src="{{ show.trailer }}" frameborder="5" allowfullscreen></iframe>
+
+{% endfor %}
+<div align="center" style="display:inline-flex;">
+    {% for show in showing %}
+   &emsp;&emsp;&emsp;&emsp;&emsp;<figure><a href="/{{ show.id }}/detail/">
+            <img src="{{ show.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+            <figcaption><strong><a href="/{{ show.id }}/detail" >{{ show.title }}<br/>{{ show.year }}</a></strong></figcaption>
+        </figure>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+{% endfor %}
+</div>
+<!--<iframe width="320" height="240" class="img-thumbnail" src="https://www.youtube.com/embed/Zv1QV6lrc_Y" frameborder="5" allowfullscreen></iframe>
+<iframe width="560" height="315" class="img-thumbnail" style="height: 315px" src="https://www.youtube.com/embed/CwfoyVa980U" frameborder="5" allowfullscreen></iframe>
+<iframe width="320" height="240" class="img-thumbnail" src="https://www.youtube.com/embed/kwWk4a5KPEY" frameborder="5" allowfullscreen></iframe>-->
+   <h3 style="color:brown;">
+    SOME OTHER MOVIES
+</h3>
+    {% for movie in all_movies%}
+    <li><a href="/{{ movie.id }}/detail">{{ movie.title }}</a></li>
+{% endfor %}
+</div>
+{% endblock%}

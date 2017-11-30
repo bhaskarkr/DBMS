@@ -1,0 +1,70 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+<div align="center">
+{% if movie or director or actor %} 
+{% if movie %}
+<strong><h3>MOVIES</h3></strong>
+<br/><br/>
+<div class="container-fluid" style="color:white">
+    <div class="row">
+        {% for mov in movie %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ mov.id }}/detail/"><img src="{{ mov.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ mov.id }}/detail/" ><h2>{{ mov.title }}</h2></a>
+                    <p align="center">DIRECTOR - <a href="/{{ mov.director_id }}/directo">{{ mov.director.name }}</a></h3>
+                    <div align="center" style="color: #FDB230;"><p><strong>&#x2605; IMDB RATING &#x2605;  {{ mov.imdb }}/10.0</strong></p></div>
+            </figure>
+        </div>        
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if actor %}
+<br/><br/>
+<strong><h3>ACTORS</h3></strong>
+<br/><br/>
+<div class="container-fluid" style="color:white;">
+    <div class="row">
+        {% for act in actor %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ act.id }}/acto/"><img src="{{ act.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ act.id }}/acto/" ><h2>{{ act.name }}</h2></a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if director %}
+<br/><br/>
+<strong><h3>DIRECTORS</h3></strong>
+<br/><br/>
+<div class="container-fluid" style="color:white">
+    <div class="row">
+        {% for dir in director %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ dir.id }}/directo/"><img src="{{ dir.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ dir.id }}/directo/" ><h2>{{ dir.name }}</h2></a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% else %}
+    <!--<iframe width="410" height="315" src="https://www.youtube.com/embed/2SuL7cAejEI" frameborder="5" allowfullscreen></iframe>-->
+    <div align="center" style="color:#FDB230">
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <strong><h1>SORRY NO RESULT FOUND.......REDIRECTING TO HOME PAGE</h1></strong>
+    <script>
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 3000);
+    </script>
+    </div>
+{% endif %}
+</div>
+{% endblock %}

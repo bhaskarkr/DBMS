@@ -1,0 +1,17 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+
+    
+<div class="container-fluid" style="color:white">
+    <div class="row">
+        {% for dir in director %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ dir.id }}/directo/"><img src="{{ dir.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ dir.id }}/directo/" ><h2>{{ dir.name }}</h2></a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

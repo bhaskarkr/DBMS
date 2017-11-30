@@ -1,0 +1,19 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+
+    
+<div class="container-fluid" style="color:white">
+    <div class="row">
+        {% for mov in movie %}
+        <div align="center" class="col-sm-4 col-lg-4">
+            <figure>
+                <a href="/{{ mov.id }}/detail/"><img src="{{ mov.pic }}" class="img-circle img-thumbnail" style="width:200px;height:200px;"></a>
+                    <a href="/{{ mov.id }}/detail/" ><h2>{{ mov.title }}</h2></a>
+                    <p align="center">DIRECTOR - <a href="/{{ mov.director_id }}/directo">{{ mov.director.name }}</a></h3>
+                    <div align="center" style="color: #FDB230;"><p><strong>&#x2605; IMDB RATING &#x2605;  {{ mov.imdb }}/10.0</strong></p></div>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

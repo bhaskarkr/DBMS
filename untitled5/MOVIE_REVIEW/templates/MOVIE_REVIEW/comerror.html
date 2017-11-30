@@ -1,0 +1,12 @@
+{% extends 'MOVIE_REVIEW/base.html' %}
+{% block body %}
+<div align="center" style="color:#FDB230">
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <strong><h1>SORRY EMAIL ID  ALREADY EXIST (ONE EMAIL ID IS ALLOWED ONLY ONE COMMENT FOR EACH MOVIE).......REDIRECTING TO PREVIOUS PAGE</h1></strong>
+    <script>
+        setTimeout(function() {
+            window.location.href = "/{{ mid }}/detail/";
+        }, 2000);
+    </script>
+    </div>
+{% endblock %}
